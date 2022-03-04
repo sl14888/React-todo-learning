@@ -1,0 +1,27 @@
+@import "./var.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+    font-family: 'Roboto',
+        -apple-system,
+        system-ui,
+        sans-serif;
+    --webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.todo {
+    font-size: 18px;
+
+    &__sidebar {
+        background-color: $bg-color-sidebar;
+        width: 200px;
+        height: 100vh;
+        border-right: solid 1px $shadow-right;
+        padding: 60px 50px;
+    }
+}
