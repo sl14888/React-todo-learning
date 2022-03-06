@@ -1,6 +1,7 @@
 import './App.scss';
 import './var.scss';
-import List from './components/List';
+import List from './components/List/List';
+import AddButtonList from './components/AddList/AddList';
 
 function App() {
   return (
@@ -24,7 +25,6 @@ function App() {
                 </svg>
               ),
               title: 'Все задачи',
-              active: true,
             },
           ]}
         />
@@ -33,13 +33,16 @@ function App() {
             {
               color: 'green',
               title: 'Покупки',
+              active: true,
             },
             {
               color: 'blue',
               title: 'Фронтенд',
             },
           ]}
+          isRemovable
         />
+        <AddButtonList />
       </aside>
       <div className="todo__tasks"></div>
     </section>

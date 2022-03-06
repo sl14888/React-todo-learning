@@ -3,6 +3,16 @@
    .list {
        margin-bottom: 30px;
 
+       &__add-button {
+           opacity: .3;
+           transition: all .3s;
+
+           &:hover {
+               transition: all .3s;
+               opacity: .7;
+           }
+       }
+
        &-item {
            display: flex;
            align-items: center;
@@ -14,6 +24,21 @@
                background: $bg-color-white;
                box-shadow: 0px 2px 10px $shadow-hover;
                border-radius: 4px;
+           }
+
+           & span {
+               max-width: 100%;
+               text-overflow: ellipsis;
+               -ms-text-overflow: ellipsis;
+               -o-text-overflow: ellipsis;
+               -ms-line-clamp: 3;
+               -webkit-line-clamp: 3;
+               line-clamp: 3;
+               display: -webkit-box;
+               display: box;
+               -webkit-box-orient: vertical;
+               white-space: nowrap;
+               overflow: hidden;
            }
        }
    }
