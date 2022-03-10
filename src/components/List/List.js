@@ -2,6 +2,8 @@ import './List.scss';
 import cn from 'classnames';
 import Badge from '../Badge/Badge';
 
+import removeSvg from '../../assets/img/icons/remove.svg';
+
 const List = ({ items, isRemovable, onClick }) => {
   return (
     <ul onClick={onClick} className="list">
@@ -12,6 +14,9 @@ const List = ({ items, isRemovable, onClick }) => {
         >
           <i className="icon">{item.icon ? item.icon : <Badge color={item.color} />}</i>
           <span>{item.name}</span>
+          {isRemovable && (
+            <img className="list__remove-icon" src={removeSvg} alt="remove icon" />
+          )}
         </li>
       ))}
     </ul>
