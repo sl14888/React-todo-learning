@@ -1,5 +1,6 @@
 import './List.scss';
 import cn from 'classnames';
+import Badge from '../Badge/Badge';
 
 const List = ({ items, isRemovable, onClick }) => {
   return (
@@ -9,10 +10,8 @@ const List = ({ items, isRemovable, onClick }) => {
           key={index}
           className={cn(item.className, 'list-item', { active: item.active })}
         >
-          <i className="icon icon-listsvg">
-            {item.icon ? item.icon : <i className={`badge badge--${item.color}`}></i>}
-          </i>
-          <span>{item.title}</span>
+          <i className="icon">{item.icon ? item.icon : <Badge color={item.color} />}</i>
+          <span>{item.name}</span>
         </li>
       ))}
     </ul>

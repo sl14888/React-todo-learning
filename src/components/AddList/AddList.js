@@ -2,8 +2,27 @@ import { React, useState } from 'react';
 import List from '../List/List';
 import './AddList.scss';
 
-const AddButtonList = () => {
+import Badge from '../Badge/Badge';
+import closeSvg from '../../assets/img/icons/close.svg';
+import { ReactComponent as AddSvg } from '../../assets/img/icons/add.svg';
+
+const AddList = ({ colors, onAdd }) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(colors[0].id);
+  const [inputValue, setInputValue] = useState('');
+
+  const addList = () => {
+    if (!inputValue) {
+      alert('Введите название списка');
+      return;
+    }
+    const color = colors.filter((c) => c.id === selectedColor)[0].name;
+    onAdd({
+      id: Math.random(),
+      name: inputValue,
+      color: color,
+    });
+  };
   return (
     <div className="add-list">
       <List
@@ -11,42 +30,44 @@ const AddButtonList = () => {
         items={[
           {
             className: 'list__add-button',
-            icon: (
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6 1V11"
-                  stroke="#868686"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M1 6H11"
-                  stroke="#868686"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            ),
-            title: 'Добавить папку',
+            icon: <AddSvg />,
+            name: 'Добавить папку',
           },
         ]}
         isRemovable
       />
       {visiblePopup && (
         <div className="add-list__popup">
-          <input type="text" placeholder="Введите папку..." />
+          <img
+            onClick={() => setVisiblePopup(false)}
+            className="add-list__popup-close-btn"
+            src={closeSvg}
+            alt="close button"
+          />
+          <input
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            className="field"
+            type="text"
+            placeholder="Введите папку..."
+          />
+          <div className="add-list__popup-colors">
+            {colors.map((color) => (
+              <Badge
+                onClick={() => setSelectedColor(color.id)}
+                key={color.id}
+                color={color.name}
+                className={selectedColor === color.id && 'active'}
+              />
+            ))}
+          </div>
+          <button onClick={addList} className="btn btn-rest">
+            Добавить
+          </button>
         </div>
       )}
     </div>
   );
 };
 
-export default AddButtonList;
+export default AddList;

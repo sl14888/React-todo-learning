@@ -19,6 +19,13 @@
            padding: 10px 12px;
            cursor: pointer;
            margin-bottom: 5px;
+           transition: all .3s;
+
+           &:hover {
+               transition: all .3s;
+               background: rgba(255, 255, 255, 0.5);
+               border-radius: 4px;
+           }
 
            &.active {
                background: $bg-color-white;
@@ -46,39 +53,4 @@
    .icon {
        display: inline-block;
        margin-right: 10px;
-   }
-
-   .badge {
-       display: inline-block;
-       width: 13px;
-       height: 13px;
-       border-radius: 30px;
-
-       &--green {
-           background-color: #42B883;
-       }
-
-       &--blue {
-           background-color: #64C4ED;
-       }
-
-       &--pink {
-           background-color: #FFBBCC;
-       }
-
-       &--light-green {
-           background-color: #B6E6BD;
-       }
-
-       &--purple {
-           background-color: #C355F5;
-       }
-
-       &--black {
-           background-color: #09011A;
-       }
-
-       &--red {
-           background-color: #FF6464;
-       }
    }

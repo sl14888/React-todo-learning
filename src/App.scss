@@ -1,6 +1,7 @@
 @import "./var.scss";
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -19,9 +20,49 @@
 
     &__sidebar {
         background-color: $bg-color-sidebar;
-        width: 200px;
+        width: 300px;
         height: 100vh;
         border-right: solid 1px $shadow-right;
-        padding: 60px 50px;
+        padding: 60px 30px;
+    }
+}
+
+.field {
+    padding: 10px 20px;
+    width: 250px;
+    height: 42px;
+    background: $bg-color-white;
+    border: 1px solid #EFEFEF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 100%;
+
+    &:focus {
+        border-color: #dbdbdbdb;
+    }
+}
+
+.btn-rest {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #3dd599;
+    border-radius: 4px;
+    color: $bg-color-white;
+    padding: 15px 25px;
+    transition: all .3s;
+
+    &:hover {
+        transition: all .3s;
+        background-color: darken(#3dd599, 6%);
+    }
+
+    &:active {
+        background-color: darken(#3dd599, 12%);
+
     }
 }
