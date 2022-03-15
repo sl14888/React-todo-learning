@@ -41,7 +41,6 @@ const AddList = ({ colors, onAdd }) => {
             name: 'Добавить папку',
           },
         ]}
-        isRemovable
       />
       {visiblePopup && (
         <div className="add-list__popup">

@@ -3,6 +3,7 @@ import './App.scss';
 import './var.scss';
 import List from './components/List/List';
 import AddList from './components/AddList/AddList';
+import Tasks from './components/Tasks/Tasks';
 
 import { ReactComponent as ListSvg } from './assets/img/icons/list.svg';
 import DB from './assets/db.json';
@@ -39,8 +40,8 @@ function App() {
         <AddList onAdd={onAddList} colors={DB.colors} />
       </aside>
       <div className="todo__tasks">
-        <div className="tasks">
-          <h2 className="tasks__title">Фронтенд</h2>
+        <div className="tasks__items-row">
+          <Tasks />
         </div>
       </div>
     </section>
