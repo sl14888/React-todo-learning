@@ -16,6 +16,7 @@
 
 
 .todo {
+    display: flex;
     font-size: 18px;
 
     &__sidebar {
@@ -24,6 +25,24 @@
         height: 100vh;
         border-right: solid 1px $shadow-right;
         padding: 60px 30px;
+    }
+
+    &__tasks {
+        flex: 1;
+        padding: 75px;
+    }
+}
+
+.tasks {
+    &__title {
+        font-family: 'Montserrat',
+            sans-serif;
+        font-weight: bold;
+        font-size: 38px;
+        line-height: 39px;
+        border-bottom: 1px solid #f2f2f2;
+        padding-bottom: 20px;
+        color: #64c4ed;
     }
 }
 

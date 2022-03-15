@@ -29,10 +29,20 @@ function App() {
             },
           ]}
         />
-        <List items={lists} isRemovable />
+        <List
+          items={lists}
+          onRemove={(list) => {
+            console.log(list);
+          }}
+          isRemovable
+        />
         <AddList onAdd={onAddList} colors={DB.colors} />
       </aside>
-      <div className="todo__tasks"></div>
+      <div className="todo__tasks">
+        <div className="tasks">
+          <h2 className="tasks__title">Фронтенд</h2>
+        </div>
+      </div>
     </section>
   );
 }
