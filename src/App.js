@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import './var.scss';
-import List from './components/List/List';
-import AddList from './components/AddList/AddList';
-import Tasks from './components/Tasks/Tasks';
+import axios from 'axios';
+
+import { List, AddList, Tasks } from './components';
 
 import { ReactComponent as ListSvg } from './assets/img/icons/list.svg';
-import DB from './assets/db.json';
+
 function App() {
   const [lists, setLists] = useState(
     DB.lists.map((item) => {
@@ -14,6 +14,13 @@ function App() {
       return item;
     })
   );
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/lists?_expend-color').then(({ data }) => {
+      console.log(data);
+    });
+  }, []);
+
   const onAddList = (obj) => {
     const newList = [...lists, obj];
     setLists(newList);
