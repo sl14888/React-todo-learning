@@ -8,8 +8,8 @@ import { List, AddList, Tasks } from './components';
 import { ReactComponent as ListSvg } from './assets/img/icons/list.svg';
 
 function App() {
-  const [lists, setLists] = useState([]);
-  const [colors, setcolors] = useState([]);
+  const [lists, setLists] = useState(null);
+  const [colors, setcolors] = useState(null);
 
   useEffect(() => {
     axios.get('http://localhost:3001/lists?_expend-color').then(({ data }) => {
@@ -25,7 +25,6 @@ function App() {
     const newList = [...lists, obj];
     setLists(newList);
   };
-
   return (
     <section className="todo">
       <aside className="todo__sidebar">
@@ -37,13 +36,19 @@ function App() {
             },
           ]}
         />
-        <List
-          items={lists}
-          onRemove={(list) => {
-            console.log(list);
-          }}
-          isRemovable
-        />
+        {lists ? (
+          <List
+            items={lists}
+            onRemove={(id) => {
+              const newList = lists.filter((item) => item.id !== id);
+              setLists(newList);
+            }}
+            isRemovable
+          />
+        ) : (
+          'Загрузка...'
+        )}
+
         <AddList onAdd={onAddList} colors={colors} />
       </aside>
       <div className="todo__tasks">

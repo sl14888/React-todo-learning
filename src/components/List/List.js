@@ -4,10 +4,14 @@ import Badge from '../Badge/Badge';
 
 import removeSvg from '../../assets/img/icons/remove.svg';
 
+import axios from 'axios';
+
 const List = ({ items, isRemovable, onClick, onRemove }) => {
   const removeList = (item) => {
     if (window.confirm('Вы действительно хотите удалить список ?')) {
-      onRemove(item);
+      axios.delete('http://localhost:3001/lists/' + item.id).then(() => {
+        onRemove(item.id);
+      });
     }
   };
   return (
@@ -17,9 +21,7 @@ const List = ({ items, isRemovable, onClick, onRemove }) => {
           key={index}
           className={cn(item.className, 'list-item', { active: item.active })}
         >
-          <i className="icon">
-            {item.icon ? item.icon : <Badge color={item.color.name} />}
-          </i>
+          <i className="icon">{item.icon ? item.icon : <Badge color={item.color} />}</i>
           <span>{item.name}</span>
           {isRemovable && (
             <img
