@@ -8,16 +8,16 @@ import { List, AddList, Tasks } from './components';
 import { ReactComponent as ListSvg } from './assets/img/icons/list.svg';
 
 function App() {
-  const [lists, setLists] = useState(
-    DB.lists.map((item) => {
-      item.color = DB.colors.filter((color) => color.id === item.colorId)[0].name;
-      return item;
-    })
-  );
+  const [lists, setLists] = useState([]);
+  const [colors, setcolors] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3001/lists?_expend-color').then(({ data }) => {
-      console.log(data);
+      setLists(data);
+    });
+
+    axios.get('http://localhost:3001/colors').then(({ data }) => {
+      setcolors(data);
     });
   }, []);
 
@@ -44,7 +44,7 @@ function App() {
           }}
           isRemovable
         />
-        <AddList onAdd={onAddList} colors={DB.colors} />
+        <AddList onAdd={onAddList} colors={colors} />
       </aside>
       <div className="todo__tasks">
         <div className="tasks__items-row">

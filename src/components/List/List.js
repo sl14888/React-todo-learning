@@ -17,7 +17,9 @@ const List = ({ items, isRemovable, onClick, onRemove }) => {
           key={index}
           className={cn(item.className, 'list-item', { active: item.active })}
         >
-          <i className="icon">{item.icon ? item.icon : <Badge color={item.color} />}</i>
+          <i className="icon">
+            {item.icon ? item.icon : <Badge color={item.color.name} />}
+          </i>
           <span>{item.name}</span>
           {isRemovable && (
             <img

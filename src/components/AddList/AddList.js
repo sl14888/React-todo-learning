@@ -6,9 +6,12 @@ import Badge from '../Badge/Badge';
 import closeSvg from '../../assets/img/icons/close.svg';
 import { ReactComponent as AddSvg } from '../../assets/img/icons/add.svg';
 
+import axios from 'axios';
+
 const AddList = ({ colors, onAdd }) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [selectedColor, setSelectedColor] = useState(3);
+  const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -28,13 +31,19 @@ const AddList = ({ colors, onAdd }) => {
       alert('Введите название списка');
       return;
     }
-    const color = colors.filter((c) => c.id === selectedColor)[0].name;
-    onAdd({
-      id: Math.random(),
-      name: inputValue,
-      color: color,
-    });
-    onClose();
+    setIsLoading(true);
+    axios
+      .post('http://localhost:3001/lists', {
+        name: inputValue,
+        colorId: selectedColor,
+      })
+      .then(({ data }) => {
+        const color = colors.filter((c) => c.id === selectedColor)[0].name;
+        const listObj = { ...data, color: { name: color } };
+        onAdd(listObj);
+        onClose();
+        setIsLoading(false);
+      });
   };
   return (
     <div className="add-list">
@@ -74,7 +83,7 @@ const AddList = ({ colors, onAdd }) => {
             ))}
           </div>
           <button onClick={addList} className="btn btn-rest">
-            Добавить
+            {isLoading ? 'добовление...' : 'Добавить'}
           </button>
         </div>
       )}
