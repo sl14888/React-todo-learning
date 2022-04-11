@@ -29,12 +29,23 @@
 
     &__items {
         margin-top: 40px;
-        display: flex;
-        align-items: center;
 
         p {
             font-size: 24px;
             margin-left: 20px;
+        }
+
+        &-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+            input {
+                margin-left: 15px;
+                border: 0;
+                font-size: 18px;
+                width: 100%;
+            }
         }
 
     }
