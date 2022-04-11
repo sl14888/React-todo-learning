@@ -11,11 +11,11 @@ const Tasks = ({ list }) => {
         <img src={EditSvg} alt="Edit icon" />
       </h2>
       <div className="tasks__items">
-        {list.tasks.map((task, index) => (
-          <div className="tasks__items-row" key={index}>
+        {list.tasks.map((task) => (
+          <div className="tasks__items-row" key={task.id}>
             <div className="checkbox">
-              <input id="check" type="checkbox" />
-              <label htmlFor="check">
+              <input id={`task-${task.id}`} type="checkbox" />
+              <label htmlFor={`task-${task.id}`}>
                 <svg
                   width="11"
                   height="8"
@@ -33,7 +33,7 @@ const Tasks = ({ list }) => {
                 </svg>
               </label>
             </div>
-            <input value={task.text} />
+            <input readOnly value={task.text} />
           </div>
         ))}
       </div>
