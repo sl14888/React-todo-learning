@@ -12,9 +12,11 @@ function App() {
   const [colors, setcolors] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/lists?_expend-color').then(({ data }) => {
-      setLists(data);
-    });
+    axios
+      .get('http://localhost:3001/lists?_expand=color&_expend=tasks')
+      .then(({ data }) => {
+        setLists(data);
+      });
 
     axios.get('http://localhost:3001/colors').then(({ data }) => {
       setcolors(data);
@@ -51,11 +53,7 @@ function App() {
 
         <AddList onAdd={onAddList} colors={colors} />
       </aside>
-      <div className="todo__tasks">
-        <div className="tasks__items-row">
-          <Tasks />
-        </div>
-      </div>
+      <div className="todo__tasks">{lists && <Tasks list={lists[1]} />}</div>
     </section>
   );
 }
