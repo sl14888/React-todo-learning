@@ -38,23 +38,11 @@
            }
 
            & span {
-               max-width: 100%;
+               flex: 1;
                text-overflow: ellipsis;
-               -ms-text-overflow: ellipsis;
-               -o-text-overflow: ellipsis;
-               -ms-line-clamp: 3;
-               -webkit-line-clamp: 3;
-               line-clamp: 3;
-               display: -webkit-box;
-               display: box;
-               -webkit-box-orient: vertical;
-               white-space: nowrap;
                overflow: hidden;
+               white-space: nowrap;
            }
-       }
-
-       span {
-           flex: 1;
        }
 
        &__remove-icon {

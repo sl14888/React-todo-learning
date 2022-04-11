@@ -24,7 +24,10 @@ const List = ({ items, isRemovable, onClick, onRemove }) => {
           <i className="icon">
             {item.icon ? item.icon : <Badge color={item.color.name} />}
           </i>
-          <span>{item.name}</span>
+          <span>
+            {item.name}
+            {item.tasks && ` (${item.tasks.length})`}
+          </span>
           {isRemovable && (
             <img
               className="list__remove-icon"
