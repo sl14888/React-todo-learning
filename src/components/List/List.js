@@ -6,7 +6,7 @@ import removeSvg from '../../assets/img/icons/remove.svg';
 
 import axios from 'axios';
 
-const List = ({ items, isRemovable, onClick, onRemove }) => {
+const List = ({ items, isRemovable, onClick, onRemove, onClickItem, activeItem }) => {
   const removeList = (item) => {
     if (window.confirm('Вы действительно хотите удалить список ?')) {
       axios.delete('http://localhost:3001/lists/' + item.id).then(() => {
@@ -18,8 +18,11 @@ const List = ({ items, isRemovable, onClick, onRemove }) => {
     <ul onClick={onClick} className="list">
       {items.map((item, index) => (
         <li
+          onClick={onClickItem ? () => onClickItem(item) : null}
           key={index}
-          className={cn(item.className, 'list-item', { active: item.active })}
+          className={cn(item.className, 'list-item', {
+            active: activeItem && activeItem.id === item.id,
+          })}
         >
           <i className="icon">
             {item.icon ? item.icon : <Badge color={item.color.name} />}

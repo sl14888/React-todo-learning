@@ -3,7 +3,6 @@ import './Tasks.scss';
 import EditSvg from '../../assets/img/icons/pen.svg';
 
 const Tasks = ({ list }) => {
-  console.log(list);
   return (
     <div className="tasks">
       <h2 className="tasks__title">

@@ -10,6 +10,7 @@ import { ReactComponent as ListSvg } from './assets/img/icons/list.svg';
 function App() {
   const [lists, setLists] = useState(null);
   const [colors, setcolors] = useState(null);
+  const [activeItem, setActiveItem] = useState(null);
 
   useEffect(() => {
     axios
@@ -40,6 +41,10 @@ function App() {
         />
         {lists ? (
           <List
+            onClickItem={(item) => {
+              setActiveItem(item);
+            }}
+            activeItem={activeItem}
             items={lists}
             onRemove={(id) => {
               const newList = lists.filter((item) => item.id !== id);
@@ -53,7 +58,7 @@ function App() {
 
         <AddList onAdd={onAddList} colors={colors} />
       </aside>
-      <div className="todo__tasks">{lists && <Tasks list={lists[0]} />}</div>
+      <div className="todo__tasks">{lists && <Tasks list={activeItem} />}</div>
     </section>
   );
 }
