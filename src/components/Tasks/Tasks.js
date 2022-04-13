@@ -2,14 +2,27 @@ import React from 'react';
 import './Tasks.scss';
 import EditSvg from '../../assets/img/icons/pen.svg';
 
-const Tasks = ({ list }) => {
+import axios from 'axios';
+
+const Tasks = ({ list, onEditTitle }) => {
+  const editTitle = () => {
+    const newTitle = window.prompt('Название списка', list.name);
+    if (newTitle) {
+      onEditTitle(list.id, newTitle);
+      axios.patch('http://localhost:3001/lists/' + list.id, {
+        name: newTitle,
+      });
+    }
+  };
+
   return (
     <div className="tasks">
       <h2 className="tasks__title">
         {list.name}
-        <img src={EditSvg} alt="Edit icon" />
+        <img onClick={editTitle} src={EditSvg} alt="Edit icon" />
       </h2>
       <div className="tasks__items">
+        {!list.tasks.length && <h2>Задачи отсутствуют</h2>}
         {list.tasks.map((task) => (
           <div className="tasks__items-row" key={task.id}>
             <div className="checkbox">

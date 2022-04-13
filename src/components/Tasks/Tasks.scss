@@ -30,6 +30,17 @@
     &__items {
         margin-top: 40px;
 
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 38px;
+            text-align: center;
+            color: #c9d1d3;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
         p {
             font-size: 24px;
             margin-left: 20px;
