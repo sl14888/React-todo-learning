@@ -1,17 +1,23 @@
 import React from 'react';
+import axios from 'axios';
+
 import './Tasks.scss';
 import EditSvg from '../../assets/img/icons/pen.svg';
 
-import axios from 'axios';
+import AddTaskForm from './AddTaskForm';
 
-const Tasks = ({ list, onEditTitle }) => {
+const Tasks = ({ list, onEditTitle, onAddTask }) => {
   const editTitle = () => {
     const newTitle = window.prompt('Название списка', list.name);
     if (newTitle) {
       onEditTitle(list.id, newTitle);
-      axios.patch('http://localhost:3001/lists/' + list.id, {
-        name: newTitle,
-      });
+      axios
+        .patch('http://localhost:3001/lists/' + list.id, {
+          name: newTitle,
+        })
+        .catch(() => {
+          alert('Не удалось обнавить название списка');
+        });
     }
   };
 
@@ -48,6 +54,7 @@ const Tasks = ({ list, onEditTitle }) => {
             <input readOnly value={task.text} />
           </div>
         ))}
+        <AddTaskForm list={list} onAddTask={onAddTask} />
       </div>
     </div>
   );

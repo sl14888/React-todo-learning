@@ -38,10 +38,13 @@ const AddList = ({ colors, onAdd }) => {
         colorId: selectedColor,
       })
       .then(({ data }) => {
-        const color = colors.filter((c) => c.id === selectedColor)[0];
+        const color = colors.filter((c) => c.id === selectedColor)[0].name;
         const listObj = { ...data, color: { name: color } };
         onAdd(listObj);
         onClose();
+      })
+      .catch(() => {
+        alert('Ошибка при добовлении задачи');
       })
       .finally(() => {
         setIsLoading(false);

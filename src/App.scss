@@ -36,7 +36,6 @@
 .field {
     padding: 10px 20px;
     width: 250px;
-    height: 42px;
     background: $bg-color-white;
     border: 1px solid #EFEFEF;
     box-sizing: border-box;
@@ -69,6 +68,18 @@
 
     &:active {
         background-color: darken(#3dd599, 12%);
+    }
 
+    &--grey {
+        background-color: #f4f6f8;
+        color: #444444;
+
+        &:hover {
+            background: darken(#f4f6f8, 5%);
+        }
+
+        &:active {
+            background: darken(#f4f6f8, 10%);
+        }
     }
 }
