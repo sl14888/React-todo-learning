@@ -21,7 +21,7 @@ const List = ({ items, isRemovable, onClick, onRemove, onClickItem, activeItem }
           onClick={onClickItem ? () => onClickItem(item) : null}
           key={index}
           className={cn(item.className, 'list-item', {
-            active: activeItem && activeItem.id === item.id,
+            active: item.active ? item.active : activeItem && activeItem.id === item.id,
           })}
         >
           <i className="icon">
