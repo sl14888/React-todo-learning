@@ -50,7 +50,7 @@ const AddTaskForm = ({ list, onAddTask }) => {
             placeholder="Введите задачу..."
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <button onClick={addTask} className="btn btn-rest">
+          <button disabled={isLoading} onClick={addTask} className="btn btn-rest">
             {isLoading ? 'Добовление...' : 'Добавить задачу'}
           </button>
           <button onClick={toggleFormVisible} className="btn btn--grey btn-rest">

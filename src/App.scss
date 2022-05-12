@@ -70,6 +70,11 @@
         background-color: darken(#3dd599, 12%);
     }
 
+    &:disabled {
+        background: #d8d8d8;
+        cursor: not-allowed;
+    }
+
     &--grey {
         background-color: #f4f6f8;
         color: #444444;
