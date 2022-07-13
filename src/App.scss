@@ -1,5 +1,24 @@
 @import "./var.scss";
 
+body {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 9px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #babac0;
+        border-radius: 16px;
+        border: 1px solid #fff;
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,6 +31,7 @@
         sans-serif;
     --webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
 }
 
 
@@ -22,9 +42,32 @@
     &__sidebar {
         background-color: $bg-color-sidebar;
         width: 300px;
-        height: 100vh;
         border-right: solid 1px $shadow-right;
-        padding: 60px 30px;
+        padding: 60px 0;
+
+        &-wrapper {
+            padding: 0 20px;
+            position: fixed;
+            width: 295px;
+            height: 90%;
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                background-color: transparent;
+                width: 6px;
+                height: 6px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #babac0;
+                border-radius: 16px;
+                border: 1px solid transparent;
+            }
+
+            &::-webkit-scrollbar-button {
+                display: none;
+            }
+        }
     }
 
     &__tasks {

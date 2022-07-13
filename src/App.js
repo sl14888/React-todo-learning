@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.scss';
 import './var.scss';
 import axios from 'axios';
+import { Route, Routes, Outlet } from 'react-router-dom';
 
 import { List, AddList, Tasks } from './components';
 
@@ -52,38 +53,68 @@ function App() {
   return (
     <section className="todo">
       <aside className="todo__sidebar">
-        <List
-          items={[
-            {
-              active: true,
-              icon: <ListSvg />,
-              name: 'Все задачи',
-            },
-          ]}
-        />
-        {lists ? (
+        <div className="todo__sidebar-wrapper">
           <List
-            onClickItem={(item) => {
-              setActiveItem(item);
-            }}
-            activeItem={activeItem}
-            items={lists}
-            onRemove={(id) => {
-              const newList = lists.filter((item) => item.id !== id);
-              setLists(newList);
-            }}
-            isRemovable
+            items={[
+              {
+                active: true,
+                icon: <ListSvg />,
+                name: 'Все задачи',
+              },
+            ]}
           />
-        ) : (
-          'Загрузка...'
-        )}
+          {lists ? (
+            <List
+              onClickItem={(item) => {
+                setActiveItem(item);
+              }}
+              activeItem={activeItem}
+              items={lists}
+              onRemove={(id) => {
+                const newList = lists.filter((item) => item.id !== id);
+                setLists(newList);
+              }}
+              isRemovable
+            />
+          ) : (
+            'Загрузка...'
+          )}
 
-        <AddList onAdd={onAddList} colors={colors} />
+          <AddList onAdd={onAddList} colors={colors} />
+        </div>
       </aside>
       <div className="todo__tasks">
-        {lists && activeItem && (
-          <Tasks onAddTask={onAddTask} list={activeItem} onEditTitle={onEditTitle} />
-        )}
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              lists &&
+              lists.map((list, index) => (
+                <Tasks
+                  key={index}
+                  onAddTask={onAddTask}
+                  list={list}
+                  onEditTitle={onEditTitle}
+                  withoutEmpty
+                />
+              ))
+            }
+          />
+          <Route
+            path="lists/:id"
+            element={
+              lists &&
+              activeItem && (
+                <Tasks
+                  onAddTask={onAddTask}
+                  list={activeItem}
+                  onEditTitle={onEditTitle}
+                />
+              )
+            }
+          />
+        </Routes>
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ import EditSvg from '../../assets/img/icons/pen.svg';
 
 import AddTaskForm from './AddTaskForm';
 
-const Tasks = ({ list, onEditTitle, onAddTask }) => {
+const Tasks = ({ list, onEditTitle, onAddTask, withoutEmpty }) => {
   const editTitle = () => {
     const newTitle = window.prompt('Название списка', list.name);
     if (newTitle) {
@@ -28,7 +28,7 @@ const Tasks = ({ list, onEditTitle, onAddTask }) => {
         <img onClick={editTitle} src={EditSvg} alt="Edit icon" />
       </h2>
       <div className="tasks__items">
-        {!list.tasks.length && <h2>Задачи отсутствуют</h2>}
+        {!withoutEmpty && !list.tasks.length && <h2>Задачи отсутствуют</h2>}
         {list.tasks.map((task) => (
           <div className="tasks__items-row" key={task.id}>
             <div className="checkbox">
