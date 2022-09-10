@@ -65,6 +65,21 @@ function App() {
     setLists(newList);
   };
 
+  const onRemoveTask = (listId, taskId) => {
+    if (window.confirm('Вы действительно хотите удалить задачу?')) {
+      const newList = lists.map((item) => {
+        if (item.id === listId) {
+          item.tasks = item.tasks.filter((task) => task.id !== taskId);
+        }
+        return item;
+      });
+      setLists(newList);
+      axios.delete('http://localhost:3001/tasks/' + taskId).catch(() => {
+        alert('Не удалось удалить задачу');
+      });
+    }
+  };
+
   return (
     <section className="todo">
       <aside className="todo__sidebar">
@@ -128,6 +143,7 @@ function App() {
                   onAddTask={onAddTask}
                   list={activeItem}
                   onEditTitle={onEditTitle}
+                  onRemoveTask={onRemoveTask}
                 />
               )
             }

@@ -6,11 +6,6 @@
       "colorId": 4
     },
     {
-      "id": 4,
-      "name": "Книги",
-      "colorId": 2
-    },
-    {
       "id": 5,
       "name": "Личное",
       "colorId": 1
@@ -26,9 +21,9 @@
       "id": 7
     },
     {
-      "name": "123",
-      "colorId": 2,
-      "id": 9
+      "name": "vf",
+      "colorId": 1,
+      "id": 11
     }
   ],
   "tasks": [
@@ -39,34 +34,16 @@
       "completed": true
     },
     {
-      "id": 2,
-      "listId": 2,
-      "text": "Изучить паттерны проектирования",
-      "completed": false
-    },
-    {
       "id": 3,
       "listId": 2,
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
       "completed": true
     },
     {
-      "id": 4,
-      "listId": 2,
-      "text": "Redux (redux-observable, redux-saga)",
-      "completed": false
-    },
-    {
       "listId": 2,
       "text": "123",
       "completed": true,
       "id": 5
-    },
-    {
-      "listId": 4,
-      "text": "Купить 1984!",
-      "completed": true,
-      "id": 10
     },
     {
       "listId": 2,
@@ -93,12 +70,6 @@
       "id": 17
     },
     {
-      "listId": 4,
-      "text": "er",
-      "completed": false,
-      "id": 18
-    },
-    {
       "listId": 5,
       "text": "пиздец",
       "completed": false,
@@ -117,18 +88,6 @@
       "id": 25
     },
     {
-      "listId": 9,
-      "text": "123",
-      "completed": false,
-      "id": 26
-    },
-    {
-      "listId": 4,
-      "text": "kn",
-      "completed": false,
-      "id": 27
-    },
-    {
       "listId": 2,
       "text": "adasdasd",
       "completed": false,
@@ -139,6 +98,18 @@
       "text": "все заебись!",
       "completed": false,
       "id": 30
+    },
+    {
+      "listId": 11,
+      "text": "",
+      "completed": false,
+      "id": 32
+    },
+    {
+      "listId": 2,
+      "text": "111",
+      "completed": false,
+      "id": 34
     }
   ],
   "colors": [
