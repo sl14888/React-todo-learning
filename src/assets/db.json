@@ -26,11 +26,6 @@
       "id": 7
     },
     {
-      "name": "TEST",
-      "colorId": 5,
-      "id": 8
-    },
-    {
       "name": "123",
       "colorId": 2,
       "id": 9
@@ -116,30 +111,6 @@
       "id": 20
     },
     {
-      "listId": 8,
-      "text": "43434",
-      "completed": false,
-      "id": 21
-    },
-    {
-      "listId": 8,
-      "text": "sddsds",
-      "completed": false,
-      "id": 22
-    },
-    {
-      "listId": 8,
-      "text": "4444",
-      "completed": false,
-      "id": 23
-    },
-    {
-      "listId": 8,
-      "text": "aaa",
-      "completed": false,
-      "id": 24
-    },
-    {
       "listId": 2,
       "text": "asdasd",
       "completed": false,
@@ -150,6 +121,24 @@
       "text": "123",
       "completed": false,
       "id": 26
+    },
+    {
+      "listId": 4,
+      "text": "kn",
+      "completed": false,
+      "id": 27
+    },
+    {
+      "listId": 2,
+      "text": "adasdasd",
+      "completed": false,
+      "id": 29
+    },
+    {
+      "listId": 5,
+      "text": "все заебись!",
+      "completed": false,
+      "id": 30
     }
   ],
   "colors": [

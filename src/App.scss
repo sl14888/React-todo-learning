@@ -46,11 +46,14 @@ body {
         padding: 60px 0;
 
         &-wrapper {
+            background-color: $bg-color-sidebar;
+
             padding: 0 20px;
             position: fixed;
-            width: 295px;
+            width: 300px;
             height: 90%;
             overflow: auto;
+
 
             &::-webkit-scrollbar {
                 background-color: transparent;

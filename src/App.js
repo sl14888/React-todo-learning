@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.scss';
 import './var.scss';
 import axios from 'axios';
-import { Route, Routes, Outlet } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import { List, AddList, Tasks } from './components';
 
@@ -12,6 +12,21 @@ function App() {
   const [lists, setLists] = useState(null);
   const [colors, setcolors] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
+
+  // console.log('activeItem', activeItem);
+  // console.log('lists', lists);
+
+  let history = useNavigate();
+  let location = useLocation();
+
+  useEffect(() => {
+    const listId = location.pathname.split('lists/')[1];
+
+    if (lists) {
+      const list = lists.find((list) => list.id === Number(listId));
+      setActiveItem(list);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     axios
@@ -55,6 +70,9 @@ function App() {
       <aside className="todo__sidebar">
         <div className="todo__sidebar-wrapper">
           <List
+            onClickItem={(list) => {
+              history(`/`, { replace: true });
+            }}
             items={[
               {
                 active: true,
@@ -65,8 +83,8 @@ function App() {
           />
           {lists ? (
             <List
-              onClickItem={(item) => {
-                setActiveItem(item);
+              onClickItem={(list) => {
+                history(`/lists/${list.id}`, { replace: true });
               }}
               activeItem={activeItem}
               items={lists}
@@ -92,7 +110,7 @@ function App() {
               lists &&
               lists.map((list, index) => (
                 <Tasks
-                  key={index}
+                  key={list.id}
                   onAddTask={onAddTask}
                   list={list}
                   onEditTitle={onEditTitle}
