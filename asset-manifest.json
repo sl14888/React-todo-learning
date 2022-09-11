@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/React-todo-learning/static/css/main.a7b32755.css",
+    "main.js": "/React-todo-learning/static/js/main.7712bdd9.js",
+    "static/media/list.svg": "/React-todo-learning/static/media/list.5965cfc53e05be88b07e5b96c229ff52.svg",
+    "static/media/close.svg": "/React-todo-learning/static/media/close.79bd8e403a9527904e8ff8d18fce2bc9.svg",
+    "index.html": "/React-todo-learning/index.html",
+    "static/media/remove.svg": "/React-todo-learning/static/media/remove.ece778a20ca12b16decc2b31ae3b8a3b.svg",
+    "static/media/pen.svg": "/React-todo-learning/static/media/pen.e0c9cc7e7a0fa5dc241cd1ddea6c4d73.svg",
+    "static/media/add.svg": "/React-todo-learning/static/media/add.496ca91ce0d24f9b01f0db0b98c14b7e.svg",
+    "main.a7b32755.css.map": "/React-todo-learning/static/css/main.a7b32755.css.map",
+    "main.7712bdd9.js.map": "/React-todo-learning/static/js/main.7712bdd9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7b32755.css",
+    "static/js/main.7712bdd9.js"
+  ]
+}
