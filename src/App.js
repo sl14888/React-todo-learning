@@ -92,6 +92,46 @@ function App() {
     });
   };
 
+  const onEditTask = (listId, taskObj) => {
+    swal('Изменить название задачи: ' + taskObj.text, {
+      className: 'remove-task',
+      content: {
+        element: 'input',
+        attributes: {
+          value: taskObj.text,
+        },
+      },
+    }).then((value) => {
+      swal(`Вы ввели: ${value}`);
+      swal('Ваша задача была изменена!', {
+        icon: 'success',
+      });
+      const newTaskText = value;
+
+      // if (!newTaskText) {
+      //   return;
+      // }
+      const newList = lists.map((list) => {
+        if (list.id === listId) {
+          list.tasks = list.tasks.map((task) => {
+            if (task.id === taskObj.id) {
+              task.text = newTaskText;
+            }
+            return task;
+          });
+        }
+        return list;
+      });
+      setLists(newList);
+      axios
+        .patch('http://localhost:3001/tasks/' + taskObj.id, { text: newTaskText })
+        .catch(() => {
+          alert('Не удалось изменить задачу');
+        });
+      console.log(taskObj.text);
+    });
+  };
+
   return (
     <section className="todo">
       <aside className="todo__sidebar">
@@ -156,6 +196,7 @@ function App() {
                 <Tasks
                   onAddTask={onAddTask}
                   list={activeItem}
+                  onEditTask={onEditTask}
                   onEditTitle={onEditTitle}
                   onRemoveTask={onRemoveTask}
                 />

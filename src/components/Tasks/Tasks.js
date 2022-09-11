@@ -8,7 +8,14 @@ import AddTaskForm from './AddTaskForm';
 import Task from './Task';
 import swal from 'sweetalert';
 
-const Tasks = ({ list, onEditTitle, onAddTask, onRemoveTask, withoutEmpty }) => {
+const Tasks = ({
+  list,
+  onEditTitle,
+  onAddTask,
+  onEditTask,
+  onRemoveTask,
+  withoutEmpty,
+}) => {
   const editTitle = () => {
     swal('Изменить название списка: ' + list.name, {
       className: 'remove-task',
@@ -33,19 +40,6 @@ const Tasks = ({ list, onEditTitle, onAddTask, onRemoveTask, withoutEmpty }) => 
           });
       }
     });
-
-    // const newTitle = window.prompt('Название списка', list.name);
-
-    // if (newTitle) {
-    //   onEditTitle(list.id, newTitle);
-    //   axios
-    //     .patch('http://localhost:3001/lists/' + list.id, {
-    //       name: newTitle,
-    //     })
-    //     .catch(() => {
-    //       alert('Не удалось обнавить название списка');
-    //     });
-    // }
   };
 
   return (
@@ -57,7 +51,13 @@ const Tasks = ({ list, onEditTitle, onAddTask, onRemoveTask, withoutEmpty }) => 
       <div className="tasks__items">
         {!withoutEmpty && !list.tasks.length && <h2>Задачи отсутствуют</h2>}
         {list.tasks.map((task) => (
-          <Task key={task.id} list={list} onRemove={onRemoveTask} {...task} />
+          <Task
+            key={task.id}
+            list={list}
+            onEdit={onEditTask}
+            onRemove={onRemoveTask}
+            {...task}
+          />
         ))}
         <AddTaskForm list={list} onAddTask={onAddTask} />
       </div>

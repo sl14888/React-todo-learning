@@ -24,11 +24,6 @@
       "name": "vf",
       "colorId": 1,
       "id": 11
-    },
-    {
-      "name": "Хуита",
-      "colorId": 6,
-      "id": 12
     }
   ],
   "tasks": [
@@ -37,12 +32,6 @@
       "listId": 2,
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
       "completed": true
-    },
-    {
-      "listId": 2,
-      "text": "222",
-      "completed": true,
-      "id": 12
     },
     {
       "listId": 7,
@@ -64,30 +53,6 @@
     },
     {
       "listId": 5,
-      "text": "пиздец",
-      "completed": false,
-      "id": 19
-    },
-    {
-      "listId": 6,
-      "text": "",
-      "completed": false,
-      "id": 20
-    },
-    {
-      "listId": 2,
-      "text": "asdasd",
-      "completed": false,
-      "id": 25
-    },
-    {
-      "listId": 2,
-      "text": "adasdasd",
-      "completed": false,
-      "id": 29
-    },
-    {
-      "listId": 5,
       "text": "все заебись!",
       "completed": false,
       "id": 30
@@ -97,6 +62,24 @@
       "text": "111",
       "completed": false,
       "id": 34
+    },
+    {
+      "listId": 2,
+      "text": "asdasd",
+      "completed": false,
+      "id": 35
+    },
+    {
+      "listId": 2,
+      "text": "23123",
+      "completed": false,
+      "id": 36
+    },
+    {
+      "listId": 2,
+      "text": "test",
+      "completed": false,
+      "id": 37
     }
   ],
   "colors": [

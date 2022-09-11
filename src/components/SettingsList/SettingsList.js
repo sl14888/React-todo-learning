@@ -5,7 +5,6 @@ import closeSvg from '../../assets/img/icons/close.svg';
 const SettingsList = () => {
   const [visiblePopup, setVisiblePopup] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState(false);
-  console.log(activeItem);
   const onClose = () => {
     setVisiblePopup(false);
   };
@@ -45,6 +44,7 @@ const SettingsList = () => {
             alt="close button"
           />
           <div className="popup-list">
+            <span>В разработке</span>
             <div
               className={activeItem ? 'active' : null}
               onClick={() => toggleActive(activeItem)}
