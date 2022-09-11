@@ -7,7 +7,7 @@
     },
     {
       "id": 5,
-      "name": "Личное",
+      "name": "Личное!",
       "colorId": 1
     },
     {
@@ -24,26 +24,19 @@
       "name": "vf",
       "colorId": 1,
       "id": 11
+    },
+    {
+      "name": "Хуита",
+      "colorId": 6,
+      "id": 12
     }
   ],
   "tasks": [
-    {
-      "id": 1,
-      "listId": 2,
-      "text": "Изучить JavaScript",
-      "completed": true
-    },
     {
       "id": 3,
       "listId": 2,
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
       "completed": true
-    },
-    {
-      "listId": 2,
-      "text": "123",
-      "completed": true,
-      "id": 5
     },
     {
       "listId": 2,
@@ -98,12 +91,6 @@
       "text": "все заебись!",
       "completed": false,
       "id": 30
-    },
-    {
-      "listId": 11,
-      "text": "",
-      "completed": false,
-      "id": 32
     },
     {
       "listId": 2,

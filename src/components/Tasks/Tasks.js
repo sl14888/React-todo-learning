@@ -6,20 +6,46 @@ import EditSvg from '../../assets/img/icons/pen.svg';
 
 import AddTaskForm from './AddTaskForm';
 import Task from './Task';
+import swal from 'sweetalert';
 
 const Tasks = ({ list, onEditTitle, onAddTask, onRemoveTask, withoutEmpty }) => {
   const editTitle = () => {
-    const newTitle = window.prompt('Название списка', list.name);
-    if (newTitle) {
-      onEditTitle(list.id, newTitle);
-      axios
-        .patch('http://localhost:3001/lists/' + list.id, {
-          name: newTitle,
-        })
-        .catch(() => {
-          alert('Не удалось обнавить название списка');
-        });
-    }
+    swal('Изменить название списка: ' + list.name, {
+      className: 'remove-task',
+      content: {
+        element: 'input',
+        attributes: {
+          value: list.name,
+        },
+      },
+    }).then((value) => {
+      // swal(`Вы ввели: ${value}`);
+      const newTitle = value;
+
+      if (newTitle) {
+        onEditTitle(list.id, newTitle);
+        axios
+          .patch('http://localhost:3001/lists/' + list.id, {
+            name: newTitle,
+          })
+          .catch(() => {
+            alert('Не удалось обнавить название списка');
+          });
+      }
+    });
+
+    // const newTitle = window.prompt('Название списка', list.name);
+
+    // if (newTitle) {
+    //   onEditTitle(list.id, newTitle);
+    //   axios
+    //     .patch('http://localhost:3001/lists/' + list.id, {
+    //       name: newTitle,
+    //     })
+    //     .catch(() => {
+    //       alert('Не удалось обнавить название списка');
+    //     });
+    // }
   };
 
   return (

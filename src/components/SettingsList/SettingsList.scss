@@ -1,0 +1,51 @@
+.settings-list {
+    opacity: .3;
+    transition: all .3s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    & .icon {
+        display: inline-block;
+        margin-right: 10px;
+        opacity: 0.3;
+    }
+
+    & span {
+        flex: 1 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+.popup {
+    &-list {
+        display: flex;
+        justify-content: space-between;
+
+        & div {
+            display: flex;
+            background-color: #eef1f4;
+            opacity: 0.5;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 6px;
+            margin-left: 5px;
+            cursor: pointer;
+            transition: opacity 0.15s ease-in-out;
+
+            &.active {
+                border: 2px solid #3dd599;
+                opacity: 0.7;
+            }
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}

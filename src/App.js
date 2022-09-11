@@ -7,6 +7,8 @@ import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { List, AddList, Tasks } from './components';
 
 import { ReactComponent as ListSvg } from './assets/img/icons/list.svg';
+import swal from 'sweetalert';
+import SettingsList from './components/SettingsList/SettingsList';
 
 function App() {
   const [lists, setLists] = useState(null);
@@ -66,18 +68,28 @@ function App() {
   };
 
   const onRemoveTask = (listId, taskId) => {
-    if (window.confirm('Вы действительно хотите удалить задачу?')) {
-      const newList = lists.map((item) => {
-        if (item.id === listId) {
-          item.tasks = item.tasks.filter((task) => task.id !== taskId);
-        }
-        return item;
-      });
-      setLists(newList);
-      axios.delete('http://localhost:3001/tasks/' + taskId).catch(() => {
-        alert('Не удалось удалить задачу');
-      });
-    }
+    swal({
+      title: 'Вы действительно хотите удалить задачу?',
+      icon: 'warning',
+      buttons: ['Отмена', 'Да'],
+      dangerMode: false,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal('Ваша задача была удалена!', {
+          icon: 'success',
+        });
+        const newList = lists.map((item) => {
+          if (item.id === listId) {
+            item.tasks = item.tasks.filter((task) => task.id !== taskId);
+          }
+          return item;
+        });
+        setLists(newList);
+        axios.delete('http://localhost:3001/tasks/' + taskId).catch(() => {
+          alert('Не удалось удалить задачу');
+        });
+      }
+    });
   };
 
   return (
@@ -114,6 +126,7 @@ function App() {
           )}
 
           <AddList onAdd={onAddList} colors={colors} />
+          <SettingsList />
         </div>
       </aside>
       <div className="todo__tasks">
@@ -129,6 +142,7 @@ function App() {
                   onAddTask={onAddTask}
                   list={list}
                   onEditTitle={onEditTitle}
+                  onRemoveTask={onRemoveTask}
                   withoutEmpty
                 />
               ))
