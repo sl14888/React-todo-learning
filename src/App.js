@@ -142,7 +142,7 @@ function App() {
             }}
             items={[
               {
-                active: true,
+                active: !activeItem,
                 icon: <ListSvg />,
                 name: 'Все задачи',
               },

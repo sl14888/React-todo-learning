@@ -59,27 +59,21 @@
     },
     {
       "listId": 2,
-      "text": "111",
+      "text": "Выучить Javascript",
       "completed": false,
       "id": 34
     },
     {
       "listId": 2,
-      "text": "asdasd",
+      "text": "Изучить Redux",
       "completed": false,
       "id": 35
     },
     {
       "listId": 2,
-      "text": "23123",
+      "text": "Выучить TypeScript",
       "completed": false,
       "id": 36
-    },
-    {
-      "listId": 2,
-      "text": "test",
-      "completed": false,
-      "id": 37
     }
   ],
   "colors": [
