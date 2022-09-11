@@ -31,24 +31,24 @@
       "id": 3,
       "listId": 2,
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": true
+      "completed": false
     },
     {
       "listId": 7,
       "text": "Сделали сайдбар",
-      "completed": true,
+      "completed": false,
       "id": 15
     },
     {
       "listId": 7,
       "text": "Сделали список задач",
-      "completed": true,
+      "completed": false,
       "id": 16
     },
     {
       "listId": 7,
       "text": "Сделали удаление и редактирование задач и списков",
-      "completed": true,
+      "completed": false,
       "id": 17
     },
     {
@@ -60,19 +60,19 @@
     {
       "listId": 2,
       "text": "Выучить Javascript",
-      "completed": false,
+      "completed": true,
       "id": 34
     },
     {
       "listId": 2,
       "text": "Изучить Redux",
-      "completed": false,
+      "completed": true,
       "id": 35
     },
     {
       "listId": 2,
       "text": "Выучить TypeScript",
-      "completed": false,
+      "completed": true,
       "id": 36
     }
   ],

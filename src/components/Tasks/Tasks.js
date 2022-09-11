@@ -14,6 +14,7 @@ const Tasks = ({
   onAddTask,
   onEditTask,
   onRemoveTask,
+  onCompleteTask,
   withoutEmpty,
 }) => {
   const editTitle = () => {
@@ -57,6 +58,7 @@ const Tasks = ({
               list={list}
               onEdit={onEditTask}
               onRemove={onRemoveTask}
+              onComplete={onCompleteTask}
               {...task}
             />
           ))}

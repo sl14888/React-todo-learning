@@ -107,10 +107,9 @@ function App() {
         icon: 'success',
       });
       const newTaskText = value;
-
-      // if (!newTaskText) {
-      //   return;
-      // }
+      if (!newTaskText) {
+        return;
+      }
       const newList = lists.map((list) => {
         if (list.id === listId) {
           list.tasks = list.tasks.map((task) => {
@@ -128,7 +127,24 @@ function App() {
         .catch(() => {
           alert('Не удалось изменить задачу');
         });
-      console.log(taskObj.text);
+    });
+  };
+
+  const onCompleteTask = (listId, taskId, completed) => {
+    const newList = lists.map((list) => {
+      if (list.id === listId) {
+        list.tasks = list.tasks.map((task) => {
+          if (task.id === taskId) {
+            task.completed = completed;
+          }
+          return task;
+        });
+      }
+      return list;
+    });
+    setLists(newList);
+    axios.patch('http://localhost:3001/tasks/' + taskId, { completed }).catch(() => {
+      alert('Не удалось обнавить задачу');
     });
   };
 
@@ -178,12 +194,14 @@ function App() {
               lists &&
               lists.map((list, index) => (
                 <Tasks
+                  list={list}
+                  withoutEmpty
                   key={list.id}
                   onAddTask={onAddTask}
-                  list={list}
+                  onEditTask={onEditTask}
                   onEditTitle={onEditTitle}
                   onRemoveTask={onRemoveTask}
-                  withoutEmpty
+                  onCompleteTask={onCompleteTask}
                 />
               ))
             }
@@ -194,11 +212,12 @@ function App() {
               lists &&
               activeItem && (
                 <Tasks
-                  onAddTask={onAddTask}
                   list={activeItem}
+                  onAddTask={onAddTask}
                   onEditTask={onEditTask}
                   onEditTitle={onEditTitle}
                   onRemoveTask={onRemoveTask}
+                  onCompleteTask={onCompleteTask}
                 />
               )
             }
